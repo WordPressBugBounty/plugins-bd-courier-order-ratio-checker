@@ -1,0 +1,599 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+@import url('https://fonts.maateen.me/solaiman-lipi/font.css');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fb;
+}
+
+.notice{
+    display: none;
+}
+.bdcrc-container {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* min-height: 100vh; */
+    padding-top: 100px;
+}
+
+.bdcrc-box {
+    width: 50%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    min-height:400px;
+}
+
+.bdcrc-horizontal-tabs {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.bdcrc-tab-menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+}
+
+.bdcrc-tab-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+.bdcrc-tab-item i {
+    margin-right: 8px;
+    color: purple;
+}
+
+.bdcrc-tab-item.active, .bdcrc-tab-item:hover {
+    background-color: #ececec;
+    font-weight: bold;
+    color: purple;
+}
+
+.bdcrc-content {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.bdcrc-content-section.active {
+    display: block;
+}
+
+.bdcrc-content-header h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.bdcrc-btn-upgrade {
+    background-color: purple;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.bdcrc-btn-upgrade:hover {
+    background-color: darkviolet;
+}
+
+/* Form Styles */
+.bdcrc-form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.bdcrc-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.bdcrc-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.bdcrc-btn-primary {
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.bdcrc-btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Checkbox and Radio Group */
+.bdcrc-checkbox-group, .bdcrc-radio-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.bdcrc-checkbox, .bdcrc-radio {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.bdcrc-checkbox input, .bdcrc-radio input {
+    margin-right: 10px;
+}
+
+/* Grid System */
+.bdcrc-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.bdcrc-col-1, .bdcrc-col-2, .bdcrc-col-3, .bdcrc-col-4, .bdcrc-col-5, .bdcrc-col-6, .bdcrc-col-7, .bdcrc-col-8, .bdcrc-col-9, .bdcrc-col-10, .bdcrc-col-11, .bdcrc-col-12 {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.bdcrc-col-1 { flex: 0 0 8.33%; max-width: 8.33%; }
+.bdcrc-col-2 { flex: 0 0 16.66%; max-width: 16.66%; }
+.bdcrc-col-3 { flex: 0 0 25%; max-width: 25%; }
+.bdcrc-col-4 { flex: 0 0 33.33%; max-width: 33.33%; }
+.bdcrc-col-5 { flex: 0 0 41.66%; max-width: 41.66%; }
+.bdcrc-col-6 { flex: 0 0 50%; max-width: 50%; }
+.bdcrc-col-7 { flex: 0 0 58.33%; max-width: 58.33%; }
+.bdcrc-col-8 { flex: 0 0 66.66%; max-width: 66.66%; }
+.bdcrc-col-9 { flex: 0 0 75%; max-width: 75%; }
+.bdcrc-col-10 { flex: 0 0 83.33%; max-width: 83.33%; }
+.bdcrc-col-11 { flex: 0 0 91.66%; max-width: 91.66%; }
+.bdcrc-col-12 { flex: 0 0 100%; max-width: 100%; }
+
+
+
+
+/* Card Styles for Support Tab */
+.bdcrc-support-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.bdcrc-support-card-body {
+    padding: 15px;
+}
+
+.bdcrc-support-card-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.bdcrc-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.bdcrc-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.bdcrc-btn-whatsapp {
+    background-color: #25d366;
+}
+
+.bdcrc-btn-facebook {
+    background-color: #4267b2;
+}
+
+.bdcrc-btn:hover {
+    opacity: 0.8;
+}
+
+.bdcrc-content {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.bdcrc-logo {
+    margin-right: 20px; /* Add space between the logo and tabs */
+}
+
+.bdcrc-logo-img {
+    width: 150px; /* Adjust logo size as needed */
+    height: auto;
+}
+
+
+#courier-data-table {
+    width: 100%;
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+.bd-courier-table {
+    width: 100%;
+    border-collapse: separate;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+     border-spacing: 0px;
+}
+
+
+
+.bd-courier-table th, 
+.bd-courier-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+/* Header Styling with specific background colors */
+.bd-courier-table thead th:nth-child(1) {
+    background-color: #1E3A8A; /* Dark Blue for Courier */
+    color: white;
+}
+
+.bd-courier-table thead th:nth-child(2) {
+    background-color: #15803D; /* Dark Green for Total */
+    color: white;
+}
+
+.bd-courier-table thead th:nth-child(3) {
+    background-color: #16A34A; /* Bright Green for Success */
+    color: white;
+}
+
+.bd-courier-table thead th:nth-child(4) {
+    background-color: #DC2626; /* Red for Cancel */
+    color: white;
+}
+
+/* Column Specific Styling for body text */
+.bd-courier-table td:nth-child(1) {
+    color: #1E3A8A; /* Dark Blue for Courier */
+}
+
+.bd-courier-table td:nth-child(2) {
+    color: #15803D; /* Dark Green for Total */
+}
+
+.bd-courier-table td:nth-child(3) {
+    color: #16A34A; /* Bright Green for Success */
+}
+
+.bd-courier-table td:nth-child(4) {
+    color: #DC2626; /* Red for Cancel */
+}
+
+.bd-courier-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.bd-courier-table tbody tr:hover {
+    background-color: #ddd;
+}
+
+.bd-courier-table td {
+    font-size: 14px;
+    color: #333;
+}
+
+.bd-courier-table th {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#courier-data-table {
+    margin-bottom: 30px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    .bd-courier-table th, .bd-courier-table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .bd-courier-table thead {
+        display: none;
+    }
+
+    .bd-courier-table tbody tr {
+        margin-bottom: 20px;
+        display: block;
+        border: 1px solid #ddd;
+    }
+
+    .bd-courier-table tbody td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .bd-courier-table tbody td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-left: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+}
+
+
+/* bdcrc (BD Courier Ratio Checker) specific styles */
+
+/* Styling for courier logos in the table */
+.bdcrc-courier-logo {
+    width: 80px;
+    height: auto;
+    vertical-align: middle;
+}
+
+/* Ensure the pills and refresh button are in one row */
+.bdcrc-summary-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Adds space between pills and button */
+    margin-top: 20px;
+}
+
+.bdcrc-summary-pills {
+    display: flex;
+    gap: 10px; /* Adds space between each pill */
+}
+
+.bdcrc-pill {
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: white;
+}
+
+.bdcrc-total-pill {
+    background-color: #6c757d; /* Gray for Total */
+}
+
+.bdcrc-success-pill {
+    background-color: #28a745; /* Green for Success */
+}
+
+.bdcrc-cancel-pill {
+    background-color: #dc3545; /* Red for Return */
+}
+
+.bdcrc-refresh-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.bdcrc-refresh-button i {
+    margin-right: 5px;
+}
+
+.bdcrc-refresh-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Progress Bar Styling */
+.bdcrc-progress-bar-wrapper {
+    background-color: #f3f3f3;
+    margin-top:15px;
+    border-radius: 5px;
+    width: 100%;
+    height: 20px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.bdcrc-progress-bar {
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.bdcrc-success-bar {
+    background-color: #28a745; /* Green for Success */
+    left: 0;
+}
+
+.bdcrc-cancel-bar {
+    background-color: #dc3545; /* Red for Cancel */
+    right: 0;
+}
+
+.bdcrc-progress-bar-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    line-height: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.bangla {
+    font-family: 'SolaimanLipi', sans-serif; /* Use a Bangla font */
+    font-size: unset; 
+}
+
+.bdcrc-settings-form {
+    margin-top: 20px;
+}
+.bdcrc-settings-form input[type="text"],
+.bdcrc-settings-form select,
+.bdcrc-settings-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+.bdcrc-settings-form input[type="submit"] {
+    background-color: #7f007f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+.bdcrc-settings-form input[type="submit"]:hover {
+    background-color: #005f8d;
+}
+
+
+#bdcourier-search-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 430px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#bdcourier-search-form input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    height: 40px; /* Same height as the button */
+}
+
+#bdcourier-search-form button {
+    padding: 10px 20px;
+    background-color: #28a745; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    height: 40px; /* Same height as the input field */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#bdcourier-search-form button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+#courier-search-result {
+    max-width: 430px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    min-height: 50px;
+    display:none;
+}
+
+
+.bdcrc-label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-weight: 500; /* Medium weight for the label */
+    color: #212529; /* Darker text color */
+    font-size: 1rem; /* Base font size */
+}
+
+.bdcrc-btn i{
+    padding-right:5px;
+}
+
+.bd-courier-progress-bar {
+    display: flex;
+    width: 100%;
+    height: 10px;
+    background-color: #e9ecef; /* Light background for progress bar */
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.success-bar {
+    background-color: #28a745; /* Green for success */
+    height: 100%;
+}
+
+.cancel-bar {
+    background-color: #dc3545; /* Red for cancel */
+    height: 100%;
+}
+
+.bd-courier-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.bd-courier-summary strong {
+    font-weight: 600; /* Slightly bold for emphasis */
+}
+
+.success-text {
+    color: #28a745; /* Match success bar color */
+}
+
+.cancel-text {
+    color: #dc3545; /* Match cancel bar color */
+}
+
+.bd-courier-summary .total-text {
+    color: #212529; /* Default text color */
+}
+
