@@ -1,100 +1,74 @@
 jQuery(document).ready(function($) {
-    $('#bdcourier-search-form').on('submit', function(e) {
+    // Refresh button for both Order Edit and Orders List pages
+    $(document).on('click', '.bdcrc-refresh-button', function(e) {
         e.preventDefault();
+        e.stopPropagation(); // Prevent event bubbling
+        const button = $(this);
+        const orderId = button.data('order-id');
+        const context = button.data('context'); // "edit" or "list"
+        console.log(`Refresh button clicked for order: ${orderId} with context: ${context}`);
         
-        var phone = $('#phone').val();
-        var button = $(this).find('button');
-
-        // Format the phone number
-        phone = formatPhoneNumber(phone);
-
-        // Validate that the phone number is 11 digits and numeric
-        if (!/^\d{11}$/.test(phone)) {
-            alert('Please enter a valid 11-digit phone number.');
-            return; // Stop the form from submitting
+        // Update button label based on context with Dashicon and spin animation
+        if (context === 'edit') {
+            button.prop('disabled', true).html('<span class="dashicons dashicons-update dashicons-spin"></span> রিফ্রেশ হচ্ছে...');
+        } else {
+            button.prop('disabled', true).html('<span class="dashicons dashicons-update dashicons-spin"></span>');
         }
-
-        button.prop('disabled', true).text('Searching...');
-
+        
+        const action = context === 'edit' ? 'refresh_courier_data_edit' : 'refresh_courier_data_list';
+        
         $.ajax({
-            url: bdcourierSearchAjax.ajaxurl, // Using localized ajaxurl
+            url: bdcourierSearchAjax.ajaxurl,
             type: 'POST',
             data: {
-                action: 'search_courier_data',
-                phone: phone,
-                nonce: bdcourierSearchAjax.search_nonce
+                action: action,
+                order_id: orderId,
+                nonce: bdcourierSearchAjax.refresh_nonce
             },
             success: function(response) {
                 if (response.success) {
-                    $('#courier-search-result')
-                        .html(response.data.table)
-                        .css('display', 'block');
+                    if (context === 'edit') {
+                        $('#courier-data-table').html(response.data.table);
+                        button.prop('disabled', false).html('<span class="dashicons dashicons-update"></span> রিফ্রেশ কুরিয়ার ডেটা');
+                    } else {
+                        $('#order-ratio-' + orderId).html(response.data.table);
+                        button.prop('disabled', false).html('<span class="dashicons dashicons-update"></span>');
+                    }
                 } else {
                     alert('Error: ' + response.data);
+                    restoreButton(context, button);
                 }
-                button.prop('disabled', false).text('Search');
             },
             error: function(xhr, status, error) {
                 alert('Ajax error: ' + error);
-                button.prop('disabled', false).text('Search');
+                restoreButton(context, button);
             }
         });
+        return false;
     });
 
-    $('.bdcrc-refresh-button').on('click', function() {
-    var button = $(this);
-    var orderId = button.data('order-id'); // Fetch the order ID from the button
-
-    button.prop('disabled', true).html(' <i class="fas fa-sync fa-spin"></i> রিফ্রেশ হচ্ছে...'); // Change button text to Bangla
-
-    $.ajax({
-        url: bdcourierSearchAjax.ajaxurl, // Using localized ajaxurl
-        type: 'POST',
-        data: {
-            action: 'refresh_courier_data',
-            order_id: orderId,
-            nonce: bdcourierSearchAjax.refresh_nonce // Correctly passing nonce as 'nonce'
-        },
-        success: function(response) {
-            if (response.success) {
-                $('#courier-data-table').html(response.data.table); // Update table with new data
-
-                // Re-add the data-order-id after refresh
-                button.data('order-id', orderId); // Retain the order ID
-                button.prop('disabled', false).html('<i class="fas fa-sync-alt"></i> রিফ্রেশ কুরিয়ার ডেটা');
-            } else {
-                alert('Error: ' + response.data);
-                button.prop('disabled', false).html('<i class="fas fa-sync-alt"></i> রিফ্রেশ কুরিয়ার ডেটা');
-            }
-        },
-        error: function(xhr, status, error) {
-            alert('Ajax error: ' + error);
-            button.prop('disabled', false).html('<i class="fas fa-sync-alt"></i> রিফ্রেশ কুরিয়ার ডেটা');
+    // Helper function to restore the button label after Ajax completes
+    function restoreButton(context, button) {
+        if (context === 'edit') {
+            button.prop('disabled', false).html('<span class="dashicons dashicons-update"></span> রিফ্রেশ কুরিয়ার ডেটা');
+        } else {
+            button.prop('disabled', false).html('<span class="dashicons dashicons-update"></span>');
         }
-    });
-});
+    }
 
-
-    // Function to format phone number
+    // Helper: Format phone number.
     function formatPhoneNumber(phone) {
-        // Remove all non-digit characters except '+' 
+        // Remove non-numeric characters.
         phone = phone.replace(/[^0-9]/g, '');
-
-        // Handle specific cases for formatting
-        if (phone.startsWith('880')) {
-            phone = phone.slice(3); // Remove '880'
-        } else if (phone.startsWith('+880')) {
-            phone = phone.slice(4); // Remove '+880'
-        } else if (phone.startsWith('0')) {
-            phone = phone.slice(1); // Remove leading '0' if exists
+        // Check prefix with indexOf for broader browser support
+        if (phone.indexOf('880') === 0) {
+            phone = phone.slice(3);
+        } else if (phone.indexOf('0') === 0) {
+            phone = phone.slice(1);
         }
-
-        // Ensure the phone number starts with '0'
-        if (!phone.startsWith('0') && phone.length === 10) {
-            phone = '0' + phone; // Add leading '0' if it's a 10-digit number
+        if (phone.length === 10) {
+            phone = '0' + phone;
         }
-
-        return phone; // Return the formatted phone number
+        return phone;
     }
 });
-

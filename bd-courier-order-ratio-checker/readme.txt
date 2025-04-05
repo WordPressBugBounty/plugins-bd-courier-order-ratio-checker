@@ -3,8 +3,8 @@ Contributors: synthiasoft,rashedulhaquerumi
 Donate link: https://bdcourier.com/donate
 Tags: order ratio, courier, woocommerce, bd courier, tracking
 Requires at least: 6.0
-Tested up to: 6.6.2
-Stable tag: 1.9
+Tested up to: 6.7.2
+Stable tag: 2.0.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -51,6 +51,11 @@ Yes, the search form can be customized using CSS.
 2. Screenshot-2.png — Displays the order ratios fetched from BD Courier's API.
 
 == Changelog ==
+= 2.0.1 =
+* Premium Api Added
+* Refresh Issue Solved
+* Design Improved
+* Orderlist Slow Issue Solved
 = 1.8 =
 *Security Issue Fixed
 = 1.7 =
